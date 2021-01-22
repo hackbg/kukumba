@@ -1,0 +1,11 @@
+[package]
+name = "kukumba"
+version = "0.1.0"
+authors = ["Adam Avramov <adam@hack.bg>"]
+edition = "2018"
+
+[lib]
+doctest=false
+
+[dependencies]
+
