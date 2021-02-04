@@ -1,8 +1,15 @@
 [package]
 name = "kukumba"
 version = "0.1.0"
-authors = ["Adam Avramov <adam@hack.bg>"]
+authors = ["Adam Avramov <adam@hack.bg>", "Milen Radkov <milen@hack.bg>"]
 edition = "2018"
+
+homepage = "https://github.com/hackbg/kukumba"
+repository = "https://github.com/hackbg/kukumba"
+keywords = ["bdd", "test"]
+readme = "README.md"
+license-file = "LICENSE"
+description = "BDD helper. Makes test cases more readable"
 
 [lib]
 doctest=false
