@@ -8,6 +8,7 @@ macro_rules! kukumba {
     )*) => {
         $(#[test] fn $unit () {
             $(
+                println!("");
                 $(println!("{} {}", stringify!($op), $desc);)+
                 $($stmt;)*
             )*
