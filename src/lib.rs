@@ -12,7 +12,7 @@ macro_rules! kukumba {
         $(#[test] fn $unit () -> Result<(), $ErrorType> {
             $(
                 $(print!("\n  {} {}", stringify!($op), $desc);)+
-                print!(": ");
+                print!(" ");
                 $($stmt;)*
             )*
             Ok(())
