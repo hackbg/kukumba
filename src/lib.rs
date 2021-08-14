@@ -24,11 +24,15 @@
         type Error = $Error:ty;
         let $Test:ident: $Harness:ty;
         $( $name:ident { $(
-          $op:ident $desc:literal $({$($body:tt)+})?
+          $op:ident $desc:literal $({$($body:tt)*})?
         )* })*
     ) => {
+        static KUKUMBA_TEST_SETUP: std::sync::Once = std::sync::Once::new();
         #[cfg(test)] fn kukumba_test_setup () {
             // before all
+            KUKUMBA_TEST_SETUP.call_once(||{
+                color_backtrace::install();
+            });
         }
         #[cfg(test)] fn kukumba_test_prepare () -> $Harness {
             // before each
@@ -42,11 +46,15 @@
         }
         $(
             #[test] fn $name () -> Result<(), $Error> {
+                kukumba_test_setup();
                 let mut $Test = kukumba_test_prepare();
                 $(
-                    print!("\n  {} {}", stringify!($op), $desc);
+                    print!(
+                        "\n  {: <5} {}",
+                        yansi::Paint::yellow(stringify!($op)),
+                        yansi::Paint::yellow($desc).bold());
                     print!(" ");
-                    $($($body)+)?;
+                    $($($body)*)?;
                 )*
                 Ok(())
             }
