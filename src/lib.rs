@@ -56,7 +56,7 @@
                     print!(" ");
                     $($($body)*)?;
                 )*
-                Ok(())
+                #[allow(unreachable_code)] Ok(())
             }
         )*
     };
